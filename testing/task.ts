@@ -87,7 +87,8 @@ function manipulation (currentcommitte) {
 let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
 let names=[]; 
- 
+let mp = new Map()
+
 for (let i =0;i<currentcommitte.length;i++)
 {
    let full_name=""; 
@@ -97,13 +98,16 @@ for (let i =0;i<currentcommitte.length;i++)
    full_name+=" "; 
    full_name+=currentcommitte[i].lastName; 
    names.push(full_name)
+   mp.set(full_name,i); 
 }
 names.sort(); 
+
 
 let newcommitte=[]; 
 for (let i=0;i<names.length;i++)
 {
-    let mydate = format(currentcommitte[i].joinDate , 'MM/dd/yyyy'); 
+    let index = mp.get(names[i]); 
+    let mydate = format(currentcommitte[index].joinDate , 'MM/dd/yyyy'); 
     let d = new Date(mydate);
     let dayName = days[d.getDay()];
     let obj = {name:names[i] , joinedin:dayName , date:mydate} ; 

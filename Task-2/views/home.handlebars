@@ -1,0 +1,58 @@
+<h1 class="text-center text-info mt-2">{{title}}</h1>
+
+
+<form action="/api/members" method="POST" class="mb-5">
+
+    <div class="form-group">
+
+        <label for="name">Name: </label>
+        <input type="text" name="name" class="form-control">
+
+    </div>
+
+    <div class="form-group">
+
+        <label for="email">Email </label>
+        <input type="email" name="email" class="form-control">
+
+    </div>
+    <div class="form-group">
+
+        <label for="mobile">Phone Number </label>
+        <input type="text" name="mobile" class="form-control">
+
+    </div>
+    <div class="form-group">
+
+        <label for="committe">committe name</label>
+        <input type="text" name="committe" class="form-control">
+
+    </div>
+
+    <button type="submit" class="btn btn-info btn-block">Submit</button>
+</form>
+
+
+<table class="table text-center">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>E-mail</th>
+            <th>Mobile</th>
+            <th>committe</th>
+        </tr>
+    </thead>
+    <tbody>
+         {{#each members}}
+        <tr>
+       
+            <td>{{this.name}}</td>
+            <td>{{this.email}}</td>
+            <td>{{this.mobile}}</td>
+            <td>{{this.committe}}</td>
+        
+        </tr>
+        {{/each}}
+       
+    </tbody>
+</table>
